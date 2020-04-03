@@ -100,7 +100,7 @@ for (k in K){
   acc <- accuracy(test.df,labelcol,predictioncol)
   print(acc)
   print(paste('The confusion metric when k = ', toString(k)))
-  print(table(test.df[[labelcol]],test.df[[predictioncol]]))
+  print(table(test.df[[predictioncol]],test.df[[labelcol]]))
   knnMetrics <- rbind(knnMetrics, c(k, acc), stringsAsFactors = FALSE)
 }
 metrics <- c("k", "accuracy")

@@ -240,7 +240,7 @@ accuracy &lt;- function(test_data,labelcol,predcol){
 }</code></pre>
 <pre class="r"><code>library(&quot;knitr&quot;)
 library(&quot;ggplot2&quot;)
-knn.df &lt;- read.csv('C:\\Users\\Charls\\Documents\\CunyMSDS\\Data622\\Assignments\\HW1\\Qn3\\icu.csv')
+knn.df &lt;- read.csv('https://raw.githubusercontent.com/charlsjoseph/data622/master/HW1/Qn3/icu.csv')
 labelcol &lt;-5
 knn.df$COMA &lt;- ifelse(knn.df$LOC==2, 1, 0)
 
@@ -272,45 +272,41 @@ for (k in K){
   acc &lt;- accuracy(test.df,labelcol,predictioncol)
   print(acc)
   print(paste('The confusion metric when k = ', toString(k)))
-  print(table(test.df[[labelcol]],test.df[[predictioncol]]))
+  print(table(test.df[[predictioncol]],test.df[[labelcol]]))
   knnMetrics &lt;- rbind(knnMetrics, c(k, acc), stringsAsFactors = FALSE)
 }</code></pre>
 <pre><code>## [1] 78.33333
 ## [1] &quot;The confusion metric when k =  3&quot;
 ##    
 ##      0  1
-##   0 44  4
-##   1  9  3
+##   0 44  9
+##   1  4  3
 ## [1] 80
 ## [1] &quot;The confusion metric when k =  5&quot;
 ##    
 ##      0  1
-##   0 47  1
-##   1 11  1
+##   0 47 11
+##   1  1  1
 ## [1] 80
 ## [1] &quot;The confusion metric when k =  7&quot;
 ##    
-##      0
-##   0 48
-##   1 12
+##      0  1
+##   0 48 12
 ## [1] 80
 ## [1] &quot;The confusion metric when k =  15&quot;
 ##    
-##      0
-##   0 48
-##   1 12
+##      0  1
+##   0 48 12
 ## [1] 80
 ## [1] &quot;The confusion metric when k =  25&quot;
 ##    
-##      0
-##   0 48
-##   1 12
+##      0  1
+##   0 48 12
 ## [1] 80
 ## [1] &quot;The confusion metric when k =  50&quot;
 ##    
-##      0
-##   0 48
-##   1 12</code></pre>
+##      0  1
+##   0 48 12</code></pre>
 <pre class="r"><code>metrics &lt;- c(&quot;k&quot;, &quot;accuracy&quot;)
 colnames(knnMetrics) &lt;- metrics</code></pre>
 <pre class="r"><code>table(test.df$STA)</code></pre>
