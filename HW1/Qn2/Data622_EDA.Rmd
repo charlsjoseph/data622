@@ -1,0 +1,102 @@
+---
+title: "DataHw1-Qn2"
+author: "Charls Joseph"
+date: "March 26, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load the 'junk1.txt' file.
+
+There are 100 observation with 3 columns.
+
+```{r}
+library(VIM)
+
+df <- read.csv("C:\\Users\\Charls\\Documents\\CunyMSDS\\Data622\\Assignments\\HW1\\Qn2\\junk1.txt", header = T, sep = ' ')
+dim(df)
+
+```
+
+## EDA for dataset 'junk1.txt"
+
+The given dataset is balanced(i.e both classes are evenly distributed.)
+a is a numeric value ranges from -2.2 to 3 
+b is a numeric value ranges from -3.1 to 3
+class - 1, 2 
+
+Note: Need to know the metadata for this dataset
+
+```{r}
+table(df$class)
+
+summary(df)
+
+```
+
+Using boxplot, determine whether there is any outliers. No outliers are found. 
+
+```{r}
+boxplot(df)
+
+```
+
+Using aggr plot, we dont see any missing values.
+
+
+```{r}
+aggr_plot <- aggr(df, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, labels=names(df), cex.axis=.7, gap=3, ylab=c("Histogram of missing data","Pattern"))
+
+```
+
+## Load the 'junk2.csv' file.
+
+There are 4000 Observations with 3 columns.
+
+```{r}
+
+
+df1 <- read.csv("C:\\Users\\Charls\\Documents\\CunyMSDS\\Data622\\Assignments\\HW1\\Qn2\\junk2.csv", header = T, sep = ',')
+
+dim(df1)
+
+
+```
+
+The given dataset is imbalanced(i.e both classes are not evenly distributed.)
+a is a numeric value ranges from -4.1 to 4.6 
+b is a numeric value ranges from -3.9 to 4.31
+class - 0, 1 
+
+Note: 
+1. Need to know the metadata for this dataset. What are variable a, b and class in business terms.
+
+2. It would be great if we can get a balanced dataset if possible. 
+
+3. Assuming that the given dataset is based on a normal distribution, the response variable is always imbalanced. So I would ask business which performance metrics i should try to improve. Whether it is Type1 error/Precision or type2/Recall while evalvating the model performance. This is very crucial for determining the optimal value of threshold for classification. 
+
+
+```{r}
+
+table(df1$class)
+
+summary(df1)
+
+```
+
+Using boxplots, we are seeing some outliers for both a, b variable. Extract those and ask business team that they are all genuine and determine the need of removing it from the dataset. 
+
+
+```{r}
+boxplot(df1)
+```
+
+There is no missing values
+```{r}
+
+aggr_plot <- aggr(df1, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, labels=names(df1), cex.axis=.7, gap=3, ylab=c("Histogram of missing data","Pattern"))
+
+```

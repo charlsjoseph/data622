@@ -1,0 +1,140 @@
+---
+title: "Data622_Assignment1"
+author: "Charls Joseph"
+date: "March 25, 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+
+```
+
+## R Markdown
+
+```{r}
+
+df <- read.csv("C:\\Users\\Charls\\Documents\\CunyMSDS\\Data622\\Assignments\\HW1\\Qn1\\data.csv")
+
+kable(df)
+
+```
+
+
+## Calculate the prior probabilties
+P(Yes)
+P(No)
+
+This calculated without seeing the entire dataset and is determined with total no of each lables in the dataset.
+
+```{r}
+p_yes <- 9/14
+p_no <- 5/14
+
+```
+
+cond_prob(df, col:val, lbl_val )
+
+
+```{r}
+cond_prob <- function(df, A, B){
+  A <- unlist(strsplit(A, ':'))
+  B <- unlist(strsplit(B, ':'))
+  df1 <- df[(df[A[1]] == A[2] & df[B[1]] == B[2]), ]
+  df2 <- df[(df[B[1]] == B[2]), ]
+  print(paste(toString(nrow(df1)),  toString(nrow(df2)), sep='/'))
+  nrow(df1)/nrow(df2)
+}
+
+```
+
+
+```{r}
+
+
+
+
+P_age_group_youth_prospect_yes <- cond_prob(df, 'age.group:youth', 'classprospect:yes')
+print(paste("P(age-group=youth|prospect=yes) = ", toString(round(P_age_group_youth_prospect_yes, 2))))
+
+
+P_age_group_middle_prospect_yes <- cond_prob(df, 'age.group:middle', 'classprospect:yes')
+print(paste("P(age-group=middle|prospect=yes) = ", toString(round(P_age_group_middle_prospect_yes, 2))))
+
+
+P_age_group_senior_prospect_yes <- cond_prob(df, 'age.group:senior', 'classprospect:yes')
+print(paste("P(age-group=senior|prospect=yes) = ", toString(round(P_age_group_senior_prospect_yes, 2))))
+
+
+P_age_group_youth_prospect_no<- cond_prob(df, 'age.group:youth', 'classprospect:no')
+print(paste("P(age-group=youth|prospect=no) = ", toString(round(P_age_group_youth_prospect_no, 2))))
+
+
+P_age_group_middle_prospect_no <- cond_prob(df, 'age.group:middle', 'classprospect:no')
+print(paste("P(age-group=middle|prospect=no) = ", toString(round(P_age_group_middle_prospect_no, 2))))
+
+
+P_age_group_senior_prospect_no <- cond_prob(df, 'age.group:senior', 'classprospect:no')
+print(paste("P(age-group=senior|prospect=no) = ", toString(round(P_age_group_senior_prospect_no, 2))))
+
+
+```
+
+```{r}
+
+P_networth_high_prospect_yes <- cond_prob(df, 'networth:high', 'classprospect:yes')
+print(paste("P(networth=high|prospect=yes) = ", toString(round(P_networth_high_prospect_yes, 2))))
+
+P_networth_low_prospect_yes <-  cond_prob(df, 'networth:low', 'classprospect:yes')
+print(paste("P(networth=low|prospect=yes) = ", toString(round(P_networth_low_prospect_yes, 2))))
+
+P_networth_medium_prospect_yes <- cond_prob(df, 'networth:medium', 'classprospect:yes')
+print(paste("P(networth=medium|prospect=yes) = ", toString(round(P_networth_medium_prospect_yes, 2))))
+
+P_networth_high_prospect_no <-  cond_prob(df, 'networth:high', 'classprospect:no')
+print(paste("P(networth=high|prospect=no) = ", toString(round(P_networth_high_prospect_no, 2))))
+
+P_networth_low_prospect_no <-  cond_prob(df, 'networth:low', 'classprospect:no')
+print(paste("P(networth=low|prospect=no) = ", toString(round(P_networth_low_prospect_no, 2))))
+
+P_networth_medium_prospect_no <- cond_prob(df, 'networth:medium', 'classprospect:no')
+print(paste("P(networth=medium|prospect=no) = ", toString(round(P_networth_medium_prospect_no, 2))))
+
+```
+
+```{r}
+
+
+P_status_employed_prospect_yes <- cond_prob(df, 'status:employed', 'classprospect:yes')
+print(paste("P(status=employed|prospect=yes) = ", toString(round(P_status_employed_prospect_yes, 2))))
+
+P_status_employed_prospect_no <- cond_prob(df, 'status:employed', 'classprospect:no')
+print(paste("P(status=employed|prospect=no) = ", toString(round(P_status_employed_prospect_no, 2))))
+
+
+P_status_unemployed_prospect_yes <- cond_prob(df, 'status:unemployed', 'classprospect:yes')
+print(paste("P(status=unemployed|prospect=yes) = ", toString(round(P_status_unemployed_prospect_yes, 2))))
+
+P_status_unemployed_prospect_no <- cond_prob(df, 'status:unemployed', 'classprospect:no')
+print(paste("P(status=unemployed|prospect=no) = ", toString(round(P_status_unemployed_prospect_no, 2))))
+
+
+
+```
+
+```{r}
+
+P_credit_fair_prospect_yes <- cond_prob(df, 'credit_rating:fair', 'classprospect:yes')
+print(paste("P(credit=fair|prospect=yes) = ", toString(round(P_credit_fair_prospect_yes, 2))))
+
+P_credit_fair_prospect_no  <- cond_prob(df, 'credit_rating:fair', 'classprospect:no')
+print(paste("P(credit=fair|prospect=no) = ", toString(round(P_credit_fair_prospect_no, 2))))
+
+P_credit_excellent_prospect_yes  <- cond_prob(df, 'credit_rating:excellent', 'classprospect:yes')
+print(paste("P(credit=excellent|prospect=yes) = ", toString(round(P_credit_excellent_prospect_yes, 2))))
+
+P_credit_excellent_prospect_no   <- cond_prob(df, 'credit_rating:excellent', 'classprospect:no') 
+print(paste("P(credit=excellent|prospect=no) = ", toString(round(P_credit_excellent_prospect_no, 2))))
+
+```

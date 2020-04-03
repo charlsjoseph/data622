@@ -1,0 +1,15 @@
+age-group,networth,status,credit_rating,classprospect
+youth,high,employed,fair,no
+youth,high,employed,excellent,no
+middle,high,employed,fair,yes
+senior,medium,employed,fair,yes
+senior,low,unemployed,fair,yes
+senior,low,unemployed,excellent,no
+middle,low,unemployed,excellent,yes
+youth,medium,employed,fair,no
+youth,low,unemployed,fair,yes
+senior,medium,unemployed,fair,yes
+youth,medium,unemployed,excellent,yes
+middle,medium,employed,excellent,yes
+middle,high,unemployed,fair,yes
+senior,medium,employed,excellent,no
