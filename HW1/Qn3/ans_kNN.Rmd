@@ -70,7 +70,7 @@ accuracy <- function(test_data,labelcol,predcol){
 ```{r}
 library("knitr")
 library("ggplot2")
-knn.df <- read.csv('C:\\Users\\Charls\\Documents\\CunyMSDS\\Data622\\Assignments\\HW1\\Qn3\\icu.csv')
+knn.df <- read.csv('https://raw.githubusercontent.com/charlsjoseph/data622/master/HW1/Qn3/icu.csv')
 labelcol <-5
 knn.df$COMA <- ifelse(knn.df$LOC==2, 1, 0)
 
